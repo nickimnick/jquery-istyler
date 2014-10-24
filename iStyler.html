@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="input_styler.js"></script>
+</head>
+<style type="text/css">
+.sStylerWrp{position:relative; height:0; width:0;}
+span.sStyleHolder{position:absolute; top:0; left:0; z-index:-1; display:block; width:128px; height:35px; background:url(select.jpg) no-repeat;}
+span.sStyler{display:block; width:128px; height:35px; line-height:35px; padding:0 5px; font-size:13px; font-family:Arial, Helvetica, sans-serif; }
+select.sSelect{width:138px; height:35px;}
+.cStyler{display:inline-block; width:10px; height:10px; background:#eee; border:1px solid #ccc;}
+.cStyler.checked{background:#ff0000;}
+input.sCheckbox{display:none;}
+
+.rStyler{display:inline-block; width:10px; height:10px; background:#eee; border: 1px solid #cccccc; -moz-border-radius: 5px; -webkit-border-radius: 5px;border-radius: 5px;}
+.rStyler.checked{background:#ff0000;}
+input.sRadio{display:none;}
+</style>
+
+<body>
+
+<select id="select1" class="select">
+<option value="0">Seçiniz 1</option>
+<option value="1">option 1-1</option>
+<option value="2">option 1-2</option>
+<option value="3">option 1-3</option>
+</select>
+<br /><br />
+<select id="select2" class="select">
+<option value="0">Seçiniz 2</option>
+<option value="1">option 2-1</option>
+<option value="2">option 2-2</option>
+<option value="3">option 2-3</option>
+</select>
+<br /><br />
+<select id="select3" class="select">
+<option value="0">Seçiniz 3</option>
+<option value="1">option 3-1</option>
+<option value="2">option 3-2</option>
+<option value="3">option 3-3</option>
+</select>
+<br /><br />
+<select id="select4" class="select2">
+<option value="0">Seçiniz 4</option>
+<option value="1">option 4-1</option>
+<option value="2">option 4-2</option>
+<option value="3">option 4-3</option>
+</select>
+<br /><br />
+<a href="javascript:void(0);" class="fire">RUN</a>
+
+<br /><br />
+<input type="checkbox" /><span>Checkbox</span>
+
+<br /><br />
+<input type="radio" name="radios" checked="checked" /><span>Radio 1</span>
+<br />
+<input type="radio" name="radios" /><span>Radio 2</span>
+<br />
+<input type="radio" name="radios" /><span>Radio 3</span>
+<br /><br />
+<input type="radio" /><span>Radio 4</span>
+
+<script type="text/javascript">
+
+$("select.select").iStyler();
+
+$("input:checkbox").iStyler();
+
+$("input:radio").iStyler();
+
+$("a.fire").click(function(){
+	$("select").iStyler({wrapper:true});	
+});
+
+</script>
+
+</body>
+</html>
