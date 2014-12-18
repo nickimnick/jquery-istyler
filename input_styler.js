@@ -1,6 +1,6 @@
 /*
 			
-	Input Styler v2.2.2 www.minus99.com - 2013
+	Input Styler v2.2.3 www.minus99.com - 2013
 			
 */
 
@@ -56,6 +56,13 @@
 							$(this).removeClass("checked");
 					});
 					
+					obj.change(function(){
+						if(obj.is(":checked"))
+							obj.prev("span.cStyler").addClass("checked");
+						else
+							obj.prev("span.cStyler").removeClass("checked");
+					});
+					
 				}else if(tag == "input" && obj.attr("type") == "radio"){		
 					
 					if(!obj.hasClass("sRadio")){
@@ -74,13 +81,19 @@
 					}
 					
 					obj.prev("span.rStyler").click(function(){
-
 						if(!obj.is(":checked")){
 							obj.click();
 							if(name != undefined) $('span.rStyler[name="'+name+'"]').removeClass("checked");
 							$(this).addClass("checked");
 						}
 
+					});
+					
+					obj.change(function(){
+						if(obj.is(":checked")){
+							if(name != undefined) $('span.rStyler[name="'+name+'"]').removeClass("checked");
+							obj.prev("span.rStyler").addClass("checked");
+						}
 					});
 	
 				}
