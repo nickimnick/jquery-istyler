@@ -1,6 +1,6 @@
 /*
 			
-	Input Styler v2.2.3 www.minus99.com - 2013
+	Input Styler v2.2.4 www.minus99.com - 2013
 			
 */
 
@@ -11,14 +11,14 @@
 					wrapper: false
 				};
 			
-			var options = $.extend(defaults, options);
+			var option = $.extend(defaults, options);
 			
 			return this.each(function(e){
-				var opt = options,
+				var opt = option,
 					obj = $(this),
 					tag = obj.prop("tagName").toLowerCase(),
 					sClass = '',
-					name;
+					name, check;
 				
 				if(tag == "select"){
 					var selText = $("option:selected", obj).text();
@@ -38,22 +38,27 @@
 					
 					if(!obj.hasClass("sCheckbox")){
 						
-						if(obj.is(":checked")) sClass = sClass+' checked'; else sClass = '';
+						sClass = (obj.is(":checked")) ? sClass+' checked' : '';
 						
 						if(!opt.wrapper)
 							obj.addClass("sCheckbox").before('<span class="cStyler'+sClass+'"></span>');
 						else
 							obj.addClass("sCheckbox").wrap('<span class="sStylerMainWrp sStylerWrp_checkbox"></span>').before('<span class="cStyler'+sClass+'"></span>');
-						
-						
+
 					}
 					
 					obj.prev("span.cStyler").click(function(){
-						obj.click();
-						if(obj.is(":checked"))
+
+						check = !obj.is(":checked");
+
+						obj.attr("checked", check).click();
+						obj.attr("checked", check);
+
+						if(check){
 							$(this).addClass("checked");
-						else
+						}else{
 							$(this).removeClass("checked");
+						}
 					});
 					
 					obj.change(function(){
@@ -62,14 +67,14 @@
 						else
 							obj.prev("span.cStyler").removeClass("checked");
 					});
-					
+										
 				}else if(tag == "input" && obj.attr("type") == "radio"){		
 					
 					if(!obj.hasClass("sRadio")){
 						name = obj.attr("name");
 						var nameStr;
 						
-						if(name == undefined) nameStr = ''; else nameStr = ' name="'+name+'"';
+						nameStr = (name == undefined) ? '' : ' name="'+name+'"';
 						
 						if(obj.is(":checked")) sClass = sClass+' checked'; else sClass = '';
 						
@@ -82,11 +87,16 @@
 					
 					obj.prev("span.rStyler").click(function(){
 						if(!obj.is(":checked")){
-							obj.click();
-							if(name != undefined) $('span.rStyler[name="'+name+'"]').removeClass("checked");
+							check = !obj.is(":checked");
+
+							obj.attr("checked", check).click();
+							obj.attr("checked", check);
+						
+							if(name != undefined)
+								$('span.rStyler[name="'+name+'"]').removeClass("checked");
+								
 							$(this).addClass("checked");
 						}
-
 					});
 					
 					obj.change(function(){
