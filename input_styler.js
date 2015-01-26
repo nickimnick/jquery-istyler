@@ -64,13 +64,6 @@
 							$(this).removeClass("checked");
 						}
 					});
-					
-					//obj.change(function(){
-					//	if(obj.is(":checked"))
-					//		obj.prev("span.cStyler").addClass("checked");
-					//	else
-					//		obj.prev("span.cStyler").removeClass("checked");
-					//});
 										
 				}else if(tag == "input" && obj.attr("type") == "radio"){		
 					
@@ -106,13 +99,6 @@
 							$(this).addClass("checked");
 						}
 					});
-					
-					//obj.change(function(){
-					//	if(obj.is(":checked")){
-					//		if(name != undefined) $('span.rStyler[name="'+name+'"]').removeClass("checked");
-					//		obj.prev("span.rStyler").addClass("checked");
-					//	}
-					//});
 	
 				}
 				
