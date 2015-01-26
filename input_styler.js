@@ -1,6 +1,6 @@
 /*
 			
-	Input Styler v2.2.4 www.minus99.com - 2013
+	Input Styler v2.2.5 www.minus99.com - 2013
 			
 */
 
@@ -51,9 +51,13 @@
 
 						check = !obj.is(":checked");
 
-						obj.attr("checked", check).click();
-						obj.attr("checked", check);
-
+						if(obj.onclick != undefined){
+							obj.attr("checked", check).click();
+							obj.attr("checked", check);
+						}else{
+							obj.click();
+						}
+						
 						if(check){
 							$(this).addClass("checked");
 						}else{
@@ -61,12 +65,12 @@
 						}
 					});
 					
-					obj.change(function(){
-						if(obj.is(":checked"))
-							obj.prev("span.cStyler").addClass("checked");
-						else
-							obj.prev("span.cStyler").removeClass("checked");
-					});
+					//obj.change(function(){
+					//	if(obj.is(":checked"))
+					//		obj.prev("span.cStyler").addClass("checked");
+					//	else
+					//		obj.prev("span.cStyler").removeClass("checked");
+					//});
 										
 				}else if(tag == "input" && obj.attr("type") == "radio"){		
 					
@@ -89,8 +93,12 @@
 						if(!obj.is(":checked")){
 							check = !obj.is(":checked");
 
-							obj.attr("checked", check).click();
-							obj.attr("checked", check);
+							if(obj.onclick != undefined){
+								obj.attr("checked", check).click();
+								obj.attr("checked", check);
+							}else{
+								obj.click();
+							}
 						
 							if(name != undefined)
 								$('span.rStyler[name="'+name+'"]').removeClass("checked");
@@ -99,12 +107,12 @@
 						}
 					});
 					
-					obj.change(function(){
-						if(obj.is(":checked")){
-							if(name != undefined) $('span.rStyler[name="'+name+'"]').removeClass("checked");
-							obj.prev("span.rStyler").addClass("checked");
-						}
-					});
+					//obj.change(function(){
+					//	if(obj.is(":checked")){
+					//		if(name != undefined) $('span.rStyler[name="'+name+'"]').removeClass("checked");
+					//		obj.prev("span.rStyler").addClass("checked");
+					//	}
+					//});
 	
 				}
 				
