@@ -1,6 +1,6 @@
 /*
 			
-	Input Styler v2.2.5 www.minus99.com - 2013
+	Input Styler v2.2.6 www.minus99.com - 2013
 			
 */
 
@@ -47,7 +47,7 @@
 
 					}
 					
-					obj.prev("span.cStyler").click(function(){
+					obj.prev("span.cStyler").unbind('click').click(function(){
 
 						check = !obj.is(":checked");
 
@@ -82,7 +82,7 @@
 							
 					}
 					
-					obj.prev("span.rStyler").click(function(){
+					obj.prev("span.rStyler").unbind('click').click(function(){
 						if(!obj.is(":checked")){
 							check = !obj.is(":checked");
 
